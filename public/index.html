@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en-IN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{name}} | Packers and Movers in Bangalore</title>
+<meta name="description" content="House shifting, office shifting and car transport from Bangalore. Free home visit or video survey, and an itemised written quote before anything is packed.">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="/style.css">
+<script src="/app.js" defer></script>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top">{{name}}</a>
+    <nav class="topnav" aria-label="Page sections">
+      <a href="#quote">Get a quote</a>
+      <a href="#rates">Rates</a>
+      <a href="#process">How it works</a>
+      <a href="#faq">Questions</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+  <div class="stripe" aria-hidden="true"></div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="label accent">Bangalore &middot; local and intercity</p>
+        <h1>Shifting from Bangalore, with the <em>price in writing.</em></h1>
+        <p class="lead">House shifting, office shifting and car transport. Send us your details on WhatsApp or use the form. We reply with a checklist and an itemised quote, before anything is packed.</p>
+        <div class="cta-row">
+          <a class="btn" href="#quote">Get a quote</a>
+          <a class="btn ghost" href="https://wa.me/{{whatsapp}}" target="_blank" rel="noopener">WhatsApp us</a>
+        </div>
+        <ul class="facts">
+          <li><span class="label accent">Survey</span><span>Free home visit in Bangalore, or a video survey on WhatsApp.</span></li>
+          <li><span class="label accent">Reply</span><span>We aim to reply within 15 minutes during office hours.</span></li>
+          <li><span class="label accent">Hours</span><span>{{hours1}}<!--if:hours2-->. {{hours2}}<!--/if:hours2-->.</span></li>
+        </ul>
+      </div>
+
+      <div class="note" id="quote">
+        <div class="note-head">
+          <h2>Quote request</h2>
+          <span class="label">Draft consignment note</span>
+        </div>
+
+        <form id="qform" class="fields" novalidate data-phone="{{phoneJio}}">
+          <div class="field full">
+            <label for="route">Moving route</label>
+            <select id="route" name="route" required>{{{routeOptions}}}</select>
+            <span class="err" id="routeErr"></span>
+          </div>
+          <div class="field full">
+            <label for="goods">What are we moving</label>
+            <select id="goods" name="goods" required>{{{goodsOptions}}}</select>
+            <span class="err" id="goodsErr"></span>
+          </div>
+          <div class="estimate" aria-live="polite">
+            <span class="label">Indicative rate</span>
+            <strong id="est">Choose a route and goods</strong>
+          </div>
+          <div class="field">
+            <label for="name">Your name</label>
+            <input id="name" name="name" autocomplete="name" maxlength="80" required>
+            <span class="err" id="nameErr"></span>
+          </div>
+          <div class="field">
+            <label for="mobile">Mobile number</label>
+            <input id="mobile" name="mobile" inputmode="numeric" autocomplete="tel-national" maxlength="14" placeholder="10 digits" required>
+            <span class="err" id="mobileErr"></span>
+          </div>
+          <div class="field">
+            <label for="date">Date of shifting</label>
+            <input id="date" name="date" type="date">
+            <span class="err" id="dateErr"></span>
+          </div>
+          <div class="field">
+            <label for="email">Email (optional)</label>
+            <input id="email" name="email" type="email" autocomplete="email" maxlength="120">
+            <span class="err" id="emailErr"></span>
+          </div>
+          <div class="field full">
+            <label for="from">Shifting from (area, floor, lift)</label>
+            <input id="from" name="from" maxlength="200" placeholder="e.g. Whitefield, 3rd floor, lift available">
+            <span class="err" id="fromErr"></span>
+          </div>
+          <div class="field full">
+            <label for="to">Shifting to (area or city)</label>
+            <input id="to" name="to" maxlength="200">
+            <span class="err" id="toErr"></span>
+          </div>
+          <div class="hp" aria-hidden="true">
+            <label for="company">Leave this field empty</label>
+            <input id="company" name="company" tabindex="-1" autocomplete="off">
+          </div>
+          <p class="form-error" id="formError" role="alert" hidden></p>
+          <button class="btn submit" id="submitBtn" type="submit">Send my request</button>
+          <p class="fine">We save these details only to prepare your quote. After sending, you can also message us on WhatsApp.</p>
+        </form>
+
+        <noscript><p class="fine">This form needs JavaScript. Please call {{phoneJio}} or message us on WhatsApp instead.</p></noscript>
+
+        <div class="result" id="result" hidden>
+          <h3 id="resultTitle" tabindex="-1">Request received</h3>
+          <p>Your reference is <strong class="ref" id="refNo"></strong>. We will contact you during office hours with a checklist and an itemised quote.</p>
+          <p id="resultRate" class="fine" hidden></p>
+          <div class="row">
+            <a class="btn" id="waSend" href="#" target="_blank" rel="noopener" hidden>Continue on WhatsApp</a>
+            <button class="btn alt" type="button" id="againBtn">Send another request</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section aria-labelledby="svc">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">What we move</span>
+        <h2 id="svc">Four kinds of move</h2>
+      </div>
+      <div class="services">
+        <div class="service">
+          <h3>House shifting</h3>
+          <p>1BHK, 2BHK, 3BHK and larger. Furniture is dismantled and refitted, kitchen appliances are wrapped, and boxes are labelled by room.</p>
+        </div>
+        <div class="service">
+          <h3>Office shifting</h3>
+          <p>Desks, workstations, files and IT equipment, planned around your working days. Tell us the headcount and we size the move.</p>
+        </div>
+        <div class="service">
+          <h3>Car transport</h3>
+          <p>Hatchback, sedan and SUV to cities across India. Cars travel on a separate vehicle from your household goods.</p>
+        </div>
+        <div class="service">
+          <h3>Delicate items</h3>
+          <p>Smart TVs, glass and sofas are packed with foam and moving blankets, and loaded so they are not stacked under heavy goods.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt-band" id="rates" aria-labelledby="rt">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">Rates from Bangalore</span>
+        <h2 id="rt">What a move usually costs</h2>
+        <p>These are starting rates in rupees. Your written quote after the survey is the price that counts.</p>
+      </div>
+      <div class="tablebox" tabindex="0" role="region" aria-label="Rates table, scrolls sideways on small screens">
+        <table>{{{ratesTable}}}</table>
+      </div>
+      <div class="notes">
+        <div>
+          <h3>What changes the price</h3>
+          <ul>
+            <li>Distance and route.</li>
+            <li>Volume of goods, not just the BHK size.</li>
+            <li>Floor, lift and how far the truck can park.</li>
+            <li>Dismantling and refitting of furniture.</li>
+            <li>Packing material and delicate items.</li>
+            <li>Transit insurance, if you add it.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Reading the table</h3>
+          <ul>
+            <li>"From" means the rate starts there and rises with the load.</li>
+            <li>Cars move on a separate vehicle and are priced on their own.</li>
+            <li>"Quote on survey" means we price that route after seeing your goods.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process" aria-labelledby="pr">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">From first message to unloading</span>
+        <h2 id="pr">How a booking works</h2>
+      </div>
+      <ol class="steps">
+        <li><h3>Share your details</h3><p>Fill the form, call, or message us on WhatsApp with your from and to addresses and moving date.</p></li>
+        <li><h3>Survey</h3><p>We visit your home, or you show us each room on a WhatsApp video call. We write up the checklist of items.</p></li>
+        <li><h3>Written quote</h3><p>You get an itemised estimate: packing, loading, transport and unloading listed separately.</p></li>
+        <li><h3>Book and move</h3><p>Confirm the booking amount with customer care. On the day we pack, load, transport and unload at the new address.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="alt-band" id="faq" aria-labelledby="fq">
+    <div class="wrap">
+      <div class="head">
+        <span class="label">Before you book</span>
+        <h2 id="fq">Common questions</h2>
+      </div>
+      <div class="faq">
+        <details>
+          <summary>Is the first price I hear the final price?</summary>
+          <p>The rates on this page are a guide. After the survey you get a written estimate. If your load and access match what we surveyed, the amount stays the same on moving day.</p>
+        </details>
+        <details>
+          <summary>Do I need to be at home for a survey?</summary>
+          <p>No. If you are in Bangalore we can visit, and if you are elsewhere or short on time, a WhatsApp video call works. Show us the rooms, wardrobes and any large or delicate items.</p>
+        </details>
+        <details>
+          <summary>How do I book?</summary>
+          <p>Accept the written quote, then confirm the booking amount with our customer care. We fix the date and crew after that.</p>
+        </details>
+        <!--if:insurance-->
+        <details>
+          <summary>What happens if something is damaged?</summary>
+          <p>{{insurance}}</p>
+        </details>
+        <!--/if:insurance-->
+        <details>
+          <summary>Can I message you on a Sunday?</summary>
+          <p>Yes, but our office is closed on Sunday. Messages sent then are answered from Monday morning.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="ct">
+    <div class="wrap">
+      <span class="label accent">Reach us</span>
+      <h2 id="ct">Talk to a person</h2>
+      <div class="cgrid">
+        <div>
+          <span class="label">Phone, Jio</span>
+          <span class="num">{{phoneJio}}</span>
+          <a href="tel:+91{{phoneJio}}">Call this number</a>
+        </div>
+        <!--if:phoneAirtel-->
+        <div>
+          <span class="label">Phone, Airtel</span>
+          <span class="num">{{phoneAirtel}}</span>
+          <a href="tel:+91{{phoneAirtel}}">Call this number</a>
+        </div>
+        <!--/if:phoneAirtel-->
+        <div>
+          <span class="label">Office hours</span>
+          <span>{{hours1}}</span>
+          <!--if:hours2--><span>{{hours2}}</span><!--/if:hours2-->
+        </div>
+        <!--if:address-->
+        <div>
+          <span class="label">Office address</span>
+          <span>{{address}}</span>
+        </div>
+        <!--/if:address-->
+        <!--if:email-->
+        <div>
+          <span class="label">Email</span>
+          <a href="mailto:{{email}}">{{email}}</a>
+        </div>
+        <!--/if:email-->
+        <!--if:gst-->
+        <div>
+          <span class="label">GST number</span>
+          <span>{{gst}}</span>
+        </div>
+        <!--/if:gst-->
+      </div>
+      <p class="legal">Rates are indicative and confirmed in your written quote. &copy; {{name}}.</p>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
